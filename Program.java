@@ -60,7 +60,7 @@ public class Program implements MouseListener
 		frame.setVisible(true);
 	}
 	
-	public void mouseClicked(MouseEvent e)
+	public void mousePressed(MouseEvent e)
 	{
 		Button b = (Button)e.getSource();
 		
@@ -87,7 +87,7 @@ public class Program implements MouseListener
 	
 	public void mouseEntered(MouseEvent e){}
 	public void mouseExited(MouseEvent e){}
-	public void mousePressed(MouseEvent e){}
+	public void mouseClicked(MouseEvent e){}
 	public void mouseReleased(MouseEvent e){}
 	
 	void populateGrid(Point origin)
