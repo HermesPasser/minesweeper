@@ -2,6 +2,7 @@ import java.awt.*;
 import javax.swing.*; 
 import java.awt.event.*; 
 import java.util.Random;
+import java.util.ArrayList;
 
 public class Program implements MouseListener
 {
@@ -67,7 +68,7 @@ public class Program implements MouseListener
 		
 		if (firstClick)
 		{
-			populateGrid(b.x, b.y);
+			populateGrid(new Point(b.x, b.y));
 			b.setEnabled(false);
 		} else 
 		{
@@ -84,20 +85,20 @@ public class Program implements MouseListener
 	public void mousePressed(MouseEvent e){}
 	public void mouseReleased(MouseEvent e){}
 	
-	void populateGrid(int originX, int originY)
+	void populateGrid(Point origin)
 	{
+		ArrayList<Point> mines = new ArrayList<Point>();
 		Random rand = new Random();
 		int i = 0;
 		while(i < MINESCOUNT)
 		{
-			int x = rand.nextInt(SIZE);
-			int y = rand.nextInt(SIZE);
+			Point pos = new Point(rand.nextInt(SIZE), rand.nextInt(SIZE));
 			
-			if (x == originX && y == originY)	
+			if (pos.equals(origin) || mines.contains(pos))
 				continue;
 			
-			buttons[x][y].setText("b");
-			buttons[x][y].isMine = true;
+			mines.add(pos);
+			buttons[pos.x][pos.y].isMine = true;
 			i++;
 		}
 	}
