@@ -147,9 +147,11 @@ public class Program implements MouseListener
 			gameOver();
 			
 		} else 
-		{			
+		{
 			int mineCount = countNeighboors(btn);
-			btn.setText(mineCount + "");
+			if (mineCount > 0)
+				btn.setText(mineCount + "");
+			
 		}
 		btn.setEnabled(false);
 	}
