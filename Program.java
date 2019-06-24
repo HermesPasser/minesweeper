@@ -23,6 +23,7 @@ public class Program implements MouseListener
 	
 	final int SIZE = 10;
 	final int MINESCOUNT = 20;
+	int unoppenedCells = SIZE * SIZE;
 	boolean firstClick = true;
 	
 	Button[][] buttons;
@@ -69,7 +70,6 @@ public class Program implements MouseListener
 		if (firstClick)
 		{
 			populateGrid(new Point(b.x, b.y));
-			b.setEnabled(false);
 		} else 
 		{
 			if (e.getButton() == MouseEvent.BUTTON1 && !b.flagIsRaised()) // prevent to click with mouse 0 if the flag is raised
@@ -77,7 +77,12 @@ public class Program implements MouseListener
 			else if (e.getButton() == MouseEvent.BUTTON3)
 				raiseFlag(b);
 		}
+		
+		if (--unoppenedCells == MINESCOUNT)
+			win();
+		
 		firstClick = false;
+		b.setEnabled(false);
 	}
 	
 	public void mouseEntered(MouseEvent e){}
@@ -151,9 +156,13 @@ public class Program implements MouseListener
 			int mineCount = countNeighboors(btn);
 			if (mineCount > 0)
 				btn.setText(mineCount + "");
-			
 		}
-		btn.setEnabled(false);
+	}
+	
+	void win()
+	{
+		SetEnableGrid(false);
+		JOptionPane.showMessageDialog(frame, "Congratulations!");
 	}
 	
 	void gameOver()
