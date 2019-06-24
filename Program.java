@@ -161,17 +161,17 @@ public class Program implements MouseListener
 	
 	void win()
 	{
-		SetEnableGrid(false);
+		setEnableGrid(false);
 		JOptionPane.showMessageDialog(frame, "Congratulations!");
 	}
 	
 	void gameOver()
 	{
-		SetEnableGrid(false);
+		setEnableGrid(false);
 		JOptionPane.showMessageDialog(frame, "Game Over.");
 	}
 	
-	void SetEnableGrid(boolean enabled)
+	void setEnableGrid(boolean enabled)
 	{
 		for (int i = 0; i < buttons.length; i++)
 		for (int j = 0; j < buttons[0].length; j++)
