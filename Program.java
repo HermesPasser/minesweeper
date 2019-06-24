@@ -123,10 +123,10 @@ public class Program implements MouseListener
 		return buttons[pos.x][pos.y].isMine;
 	}
 	
-	int countNeighboors(Button btn)
+	int countNeighbors(Button btn)
 	{
 		int count = 0;
-		Point[] neighboors = new Point[]{
+		Point[] neighbors = new Point[]{
 			new Point(btn.x - 1, btn.y - 1),
 			new Point(btn.x,     btn.y - 1),
 			new Point(btn.x + 1, btn.y - 1),
@@ -138,8 +138,8 @@ public class Program implements MouseListener
 			new Point(btn.x,     btn.y + 1),
 			new Point(btn.x + 1, btn.y + 1)
 		};
-		for (int i = 0; i < neighboors.length; i++)
-			if (hasMine(neighboors[i]))
+		for (int i = 0; i < neighbors.length; i++)
+			if (hasMine(neighbors[i]))
 				count++;	
 		return count;
 	}
@@ -153,7 +153,7 @@ public class Program implements MouseListener
 			
 		} else 
 		{
-			int mineCount = countNeighboors(btn);
+			int mineCount = countNeighbors(btn);
 			if (mineCount > 0)
 				btn.setText(mineCount + "");
 		}
