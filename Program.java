@@ -68,16 +68,13 @@ public class Program implements MouseListener
 			return;
 		
 		if (firstClick)
-		{
 			populateGrid(new Point(b.x, b.y));
-		} else 
-		{
-			if (e.getButton() == MouseEvent.BUTTON1 && !b.flagIsRaised()) // prevent to click with mouse 0 if the flag is raised
-				checkMine(b);
-			else if (e.getButton() == MouseEvent.BUTTON3)
-				raiseFlag(b);
-		}
 		
+		if (e.getButton() == MouseEvent.BUTTON1 && !b.flagIsRaised()) // prevent to click with mouse 0 if the flag is raised
+			checkMine(b);
+		else if (e.getButton() == MouseEvent.BUTTON3 && !firstClick)
+			raiseFlag(b);
+			
 		if (--unoppenedCells == MINESCOUNT)
 			win();
 		
